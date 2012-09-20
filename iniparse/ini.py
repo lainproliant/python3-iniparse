@@ -465,7 +465,7 @@ class INIConfig(ConfigNamespace):
         self._sections = {}
         if defaults is None: defaults = {}
         self._defaults = INISection(LineContainer(), optionxformsource=self)
-        for name, value in defaults.iteritems():
+        for name, value in defaults.items():
             self._defaults[name] = value
         if fp is not None:
             self._readfp(fp)
@@ -551,7 +551,7 @@ class INIConfig(ConfigNamespace):
 
         for line in readline_iterator(fp):
             # Check for BOM on first line
-            if linecount == 0 and isinstance(line, unicode):
+            if linecount == 0:
                 if line[0] == '\ufeff':
                     line = line[1:]
                     self._bom = True
